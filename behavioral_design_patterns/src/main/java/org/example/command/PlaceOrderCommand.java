@@ -1,9 +1,11 @@
 package org.example.command;
 
+import org.example.Order;
 import org.example.handler.InventoryCheckHandler;
 import org.example.handler.PaymentValidationHandler;
 import org.example.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 @Component

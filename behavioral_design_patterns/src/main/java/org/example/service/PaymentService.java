@@ -1,5 +1,8 @@
 package org.example.service;
 
+import org.example.Order;
+import org.springframework.stereotype.Service;
+
 @Service
 public class PaymentService {
     public boolean validatePayment(Order order) {

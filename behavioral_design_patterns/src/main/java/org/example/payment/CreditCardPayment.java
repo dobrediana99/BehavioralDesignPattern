@@ -1,3 +1,6 @@
+package org.example.payment;
+
+import org.example.service.PaymentGatewayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

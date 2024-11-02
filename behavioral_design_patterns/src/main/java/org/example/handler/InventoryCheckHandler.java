@@ -2,6 +2,8 @@
 package org.example.handler;
 
 import org.example.Order;
+import org.example.service.InventoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class InventoryCheckHandler extends OrderValidationHandler {
     @Autowired

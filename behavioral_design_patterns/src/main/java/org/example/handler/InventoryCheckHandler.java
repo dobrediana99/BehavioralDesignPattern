@@ -1,10 +1,9 @@
 
 package org.example.handler;
 
-import org.example.Order;
+import org.example.model.Order;
 import org.example.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-
 public class InventoryCheckHandler extends OrderValidationHandler {
     @Autowired
     private InventoryService inventoryService; // Assume this service checks stock availability
@@ -26,6 +25,20 @@ public class InventoryCheckHandler extends OrderValidationHandler {
         // Call the next handler in the chain if validation passes
         if (nextHandler != null) {
             nextHandler.validate(order);
+        }
+    }
+
+    @Override
+    public void handle(Order order) {
+        // Validate inventory for each item in the order
+        order.getItems().forEach(item -> {
+            // Inventory check logic for each item, e.g., checking stock levels
+            System.out.println("Checking inventory for product ID: " + item.getProductId());
+        });
+
+        // Pass to the next handler in the chain if validation passes
+        if (nextHandler != null) {
+            nextHandler.handle(order);
         }
     }
 }

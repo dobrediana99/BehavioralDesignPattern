@@ -1,6 +1,7 @@
 package org.example.service;
 
-import org.example.Order;
+import org.example.model.Order;
+import org.example.model.OrderStatus;
 import org.example.payment.PaymentStrategy;
 import org.example.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class OrderService {
     }
 
     public void placeOrder(Order order) {
-        order.setStatus(OrderStatus.PLACED);
+        order.setStatus(String.valueOf(OrderStatus.PLACED));
         orderRepository.save(order);
     }
 

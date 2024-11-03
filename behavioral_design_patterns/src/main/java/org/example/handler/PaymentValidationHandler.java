@@ -1,7 +1,6 @@
 package org.example.handler;
 
-import org.example.Order;
-import org.example.handler.OrderValidationHandler;
+import org.example.model.Order;
 import org.example.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -28,6 +27,17 @@ public class PaymentValidationHandler extends OrderValidationHandler {
         // Proceed to the next handler in the chain if validation succeeds
         if (nextHandler != null) {
             nextHandler.validate(order);
+        }
+    }
+
+    @Override
+    public void handle(Order order) {
+        // Call the validate method to perform inventory checks
+        validate(order);
+
+        // Proceed to the next handler in the chain if it exists
+        if (nextHandler != null) {
+            nextHandler.handle(order);
         }
     }
 }

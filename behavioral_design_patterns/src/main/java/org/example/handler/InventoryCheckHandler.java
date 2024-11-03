@@ -4,6 +4,9 @@ package org.example.handler;
 import org.example.model.Order;
 import org.example.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class InventoryCheckHandler extends OrderValidationHandler {
     @Autowired
     private InventoryService inventoryService; // Assume this service checks stock availability

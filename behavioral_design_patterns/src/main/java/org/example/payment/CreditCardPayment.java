@@ -1,5 +1,6 @@
 package org.example.payment;
 
+import lombok.Value;
 import org.example.service.PaymentGatewayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,14 +15,6 @@ public class CreditCardPayment implements PaymentStrategy {
     private String cardHolderName;
     private String expirationDate;
     private String cvv;
-
-    // Constructor to set credit card details or use setter methods
-    public CreditCardPayment(String cardNumber, String cardHolderName, String expirationDate, String cvv) {
-        this.cardNumber = cardNumber;
-        this.cardHolderName = cardHolderName;
-        this.expirationDate = expirationDate;
-        this.cvv = cvv;
-    }
 
     @Override
     public boolean pay(double amount) {

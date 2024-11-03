@@ -1,9 +1,6 @@
 package org.example.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
@@ -12,6 +9,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "customer_order")
 public class Order {
 
     @Id
@@ -23,9 +21,11 @@ public class Order {
     private double totalAmount;
     @Setter
     @Getter
+    @OneToOne
     private PaymentDetails paymentDetails;
     @Getter
     @Setter
+    @OneToMany
     private List<Item> items;  // List of items in the order
 
     public void updateStatus(String newStatus) {

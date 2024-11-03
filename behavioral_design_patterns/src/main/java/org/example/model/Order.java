@@ -21,7 +21,8 @@ public class Order {
     private double totalAmount;
     @Setter
     @Getter
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)  // Cascade all operations, so PaymentDetails will be persisted automatically
+    @JoinColumn(name = "payment_details_id")
     private PaymentDetails paymentDetails;
     @Getter
     @Setter

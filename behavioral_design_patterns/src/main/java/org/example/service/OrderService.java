@@ -17,9 +17,10 @@ public class OrderService {
         return orderRepository.findById(orderId).orElse(null);
     }
 
-    public void placeOrder(Order order) {
+    public Order placeOrder(Order order) {
         order.setStatus(String.valueOf(OrderStatus.PLACED));
         orderRepository.save(order);
+        return order;
     }
 
     public void setPaymentStrategy(PaymentStrategy paymentStrategy) {
@@ -28,5 +29,27 @@ public class OrderService {
 
     public boolean processOrderPayment(double amount) {
         return paymentStrategy.pay(amount);
+    }
+
+    // Method to update an existing order
+    public Order updateOrder(Long id, Order updatedOrder) {
+        return orderRepository.findById(id)
+                .map(order -> {
+                    order.setCustomerName(updatedOrder.getCustomerName());
+                    order.setTotalAmount(updatedOrder.getTotalAmount());
+                    order.setStatus(updatedOrder.getStatus());
+                    order.setPaymentDetails(updatedOrder.getPaymentDetails());
+                    return orderRepository.save(order);
+                })
+                .orElseThrow(() -> new RuntimeException("Order not found"));
+    }
+
+    // Method to delete an order by ID
+    public void deleteOrder(Long id) {
+        if (orderRepository.existsById(id)) {
+            orderRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Order not found");
+        }
     }
 }

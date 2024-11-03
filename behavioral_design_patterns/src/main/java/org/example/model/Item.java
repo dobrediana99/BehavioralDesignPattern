@@ -19,6 +19,10 @@ public class Item {
         this.quantity = quantity;
     }
 
+    public Item() {
+
+    }
+
     // Getters and setters
     public Long getProductId() {
         return productId;

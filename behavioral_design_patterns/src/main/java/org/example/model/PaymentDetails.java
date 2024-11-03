@@ -12,16 +12,37 @@ public class PaymentDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    // Getters and setters
-    @Getter
     private String paymentMethod;
-    @Getter
     private String cardNumber; // Or other necessary payment fields
 
     // Constructor
     public PaymentDetails(String paymentMethod, String cardNumber) {
         this.paymentMethod = paymentMethod;
         this.cardNumber = cardNumber;
+    }
+
+    public PaymentDetails() {
+
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public String getCardNumber() {
+        return cardNumber;
     }
 
     public void setCardNumber(String cardNumber) {
